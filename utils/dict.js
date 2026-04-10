@@ -1,8 +1,3 @@
-/**
- * Created by 芋道源码
- *
- * 数据字典工具类
- */
 
 export const DICT_TYPE = {
 

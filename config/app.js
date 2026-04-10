@@ -1,7 +1,5 @@
 //let domain = 'http://127.0.0.1:48080'
 //let domain = 'http://192.168.0.100:48080'
-//let domain = 'https://map.woju.vip'
-//let domain = 'https://www.woju.vip'
 let domain = 'https://gongyutest.zh-jinhang.com'
 //let domain = 'http://z7256978.natappfree.cc'
 module.exports = {
@@ -12,7 +10,6 @@ module.exports = {
 	// #ifdef H5
 		//H5接口是浏览器地址
 		// HTTP_REQUEST_URL: window.location.protocol+"//"+window.location.host,
-		// http://api.java.crmeb.net:20001
 		HTTP_REQUEST_URL: domain,
 	// #endif
 

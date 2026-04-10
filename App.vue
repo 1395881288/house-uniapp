@@ -49,7 +49,7 @@
 				);
 				return false;
 			}
-			// TODO 芋艿: 分销
+			// TODO : 分销
 			if (option.query.hasOwnProperty('scene')) {
 				switch (option.scene) {
 					case 1047: // 扫描小程序码

@@ -1,0 +1,331 @@
+
+<template>
+    <view class="container">
+        <!-- 百度地图组件  @ready： 处理数据刷新 -->
+        <baidu-map class="bm-view" :center="centerPoint" :zoom=16 @ready="handler">
+            <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+            <!--bm-circle :center="centerPoint" :radius="2000" stroke-color="blue" :stroke-opacity="0.5" :stroke-weight="1"></bm-circle-->
+            <!-- 百度地图定位点 -->
+            <bm-marker :position="{lat:this.building.latitude,lng:this.building.longitude}" :dragging="false"
+              animation="BMAP_ANIMATION_BOUNCE"
+              :offset="{width: 0, height: -20}"
+              :icon="{url: '/static/images/detail/marker.png', size: {width: 64, height: 64}}"
+              @click="infoWindowOpen">
+                <!-- 百度地图遮罩物 -->
+                <my-overlay
+                      v-if="show"
+                      :position="{lat:this.building.latitude,lng:this.building.longitude}"
+                      :text="building.buildingName">
+                </my-overlay>
+            </bm-marker>
+            <template v-for="(marker,index) in navlist[navindex].list">
+              <bm-marker :position="marker.location" :dragging="false" @click="showMarkerInfo(marker)">
+                <my-overlay
+                      v-if="marker.show"
+                      :position="marker.location"
+                      :text="marker.name">
+                </my-overlay>
+              </bm-marker>
+            </template>
+        </baidu-map>
+        <view class="box">
+          <u-tabs-custom :list="navlist" @click="navclick" itemStyle="display:flex;flex-direction:column;font-size:14rpx;margin:10rpx 0"></u-tabs-custom>
+          <template>
+            <view class="zhoubianbuilding" v-for="(item,index) in navlist"  v-if="navindex == index"  >
+              <view class="zhoubian" v-for="(itemsub,indexsub) in item.list" @click="showMarker(itemsub)">
+                <u--image :showLoading="true" :src="item.icon" width="16px" height="16px"></u--image>
+                <view class="zhoubianname">{{itemsub.name}}</view>
+                <view class="zhoubiandistance">{{'直线'+itemsub.distance+'米'}}</view>
+              </view>
+            </view>
+          </template>
+        </view>
+        <u-gap height="0"></u-gap>
+
+    </view>
+</template>
+
+<script>
+    import MyOverlay from './MyOverlay.vue'
+    import Vue from 'vue'
+    // 引入百度地图
+    import BaiduMap from 'vue-baidu-map'
+
+    const ak = 'SDtqI8XXxHGEffUBHsGQB3FMnF2j76Yh'
+    Vue.use(BaiduMap, {
+        // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+        ak: ak
+    });
+    export default {
+        components: {
+            MyOverlay
+        },
+
+        data() {
+
+            return {
+                map:null,
+	              BMap:null,
+                centerPoint: {
+                    lng: 113.282202,
+                    lat: 23.13771
+                },
+                locPoint: {
+
+                },
+                locName: "我的位置",
+                show: false,
+                navlist: [
+                    {
+                        name: '地铁',
+                        icon: "/static/images/detail/metro.png",
+                        loaded:false,
+                        list:[]
+                    }, {
+                        name: '公交',
+                        icon: "/static/images/detail/bus.png",
+                        loaded:false,
+                        list:[]
+                    }, {
+                        name: '教育',
+                        icon: "/static/images/detail/school.png",
+                        loaded:false,
+                        list:[]
+                    }, {
+                        name: '购物',
+                        icon: "/static/images/detail/shop.png",
+                        loaded:false,
+                        list:[],
+                    }, {
+                        name: '医院',
+                        icon: "/static/images/detail/medical.png",
+                        loaded:false,
+                        list:[]
+                    }, {
+                        name: '银行',
+                        icon: "/static/images/detail/bank.png",
+                        loaded:false,
+                        list:[]
+                    }
+                ],
+                navindex:0,
+            }
+        },
+        props: {
+            building: {
+                type:Object,
+                default: () => ({})
+            }
+        },
+        watch: {
+            building: {
+                handler(newVal, oldVal) {
+                   this.init(); //filterData重新赋值初始化菜单
+                },
+                immediate: true
+            }
+
+        },
+        methods: {
+            init(){
+               console.log("========"+this.building)
+               console.log(this.building)
+               this.centerPoint.lat=this.building.latitude
+               this.centerPoint.lng=this.building.longitude
+               this.locPoint=this.centerPoint
+               this.mapsearch(this.navlist[0])
+            },
+            handler({
+                BMap,
+                map
+            }) {
+                this.map = map
+                this.BMap = BMap
+                console.log(BMap, map)
+
+                //this.getLocation();
+
+            },
+            getLocation() {
+                let _this = this
+                console.log('获取定位');
+                uni.getLocation({
+                    type: 'gcj02',
+                    isHighAccuracy: true,
+                    success: function(res) {
+
+                        _this.locPoint = {
+                            'lng': res.longitude,
+                            'lat': res.latitude
+                        };
+
+                        var point = new BMap.Point(res.longitude, res.latitude);
+                        var gc = new BMap.Geocoder();
+                        gc.getLocation(point, function(rs) {
+
+                            // 获取地址组成
+                            let addressDict = rs.addressComponents;
+                            // 拼接地址
+                            _this.locName = addressDict.province + addressDict.city + addressDict
+                                .district + addressDict.street + addressDict.streetNumber;
+
+                            // 弹框显示信息
+                            uni.showModal({
+                                title: '定位坐标转地址',
+                                content: "地址信息 = " + JSON.stringify(rs)
+                            })
+                        });
+                    },
+                    fail: function(res) {
+                        console.log(res);
+                    },
+                });
+            },
+            infoWindowClose() {
+                this.show = false
+            },
+            infoWindowOpen() {
+                this.show = true
+            },
+            navclick(item) {
+                console.log('item', item);
+                this.navindex=item.index
+                if(!item.loaded)
+                {
+                  this.mapsearch(this.navlist[item.index])
+                }
+
+            },
+            mapsearch(item){
+              //https://api.map.baidu.com/place/v2/search?query=银行&location=39.915,116.404&radius=2000&page_size=5&output=json&ak=您的密钥
+              let that=this
+              var serverak="zqIiam9y0ktPBKVYVTm5s2HgqY8ceUwW" //服务器端ak和web端不能混用
+              var queryParams={
+                      //query: '银行',
+                      buildingId:this.building.id,
+                      query:item.name,
+                      location:`${this.building.latitude},${this.building.longitude}`,
+                      radius:2000,
+                      page_size:5,
+                      output:"json",
+                      ak:serverak
+              };
+              uni.$u.http.get('/house/room/mapBaiduSearch', {params: queryParams}).then(res => {
+                 console.log(res)
+                 item.loaded=true;
+                 if(res.data.results)
+                 {
+                    res.data.results.forEach(item => {
+                        item.show=false
+
+                        item.distance=that.space(item.location,that.centerPoint);
+                    })
+                    //item.list=item.list.concat(res.data.results)
+                    item.list=res.data.results;
+
+                 }
+              }).catch(err => {
+                 console.log(err)
+
+              })
+
+            },
+            showMarker(item)
+            {
+              this.navlist.forEach(item => {
+                item.list.forEach(marker => {
+                  marker.show=false
+                })
+              })
+              item.show=true;
+              this.centerPoint=item.location
+            },
+            showMarkerInfo(marker){
+              this.navlist.forEach(item => {
+                item.list.forEach(marker => {
+                  marker.show=false
+                })
+              })
+              console.log(this.navlist)
+              marker.show=true
+            },
+            //原文链接：https://blog.csdn.net/qq_40137978/article/details/113352839
+            space(location1,location2) {
+              let lat1=location1.lat
+              let lng1=location1.lng
+              let lat2=location2.lat
+              let lng2=location2.lng
+              console.log(lat1, lng1, lat2, lng2)
+              var radLat1 = lat1 * Math.PI / 180.0;
+              var radLat2 = lat2 * Math.PI / 180.0;
+              var a = radLat1 - radLat2;
+              var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+              var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+                   Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+              var EARTH_RADIUS = 6378137.0;    //单位M
+              s = s * EARTH_RADIUS;
+
+              s = Math.round(s * 10000) / 10000;
+              s=Math.round(s)
+              return s
+            },
+            space2(lat1, lng1, lat2, lng2) {
+              console.log(lat1, lng1, lat2, lng2)
+              var radLat1 = lat1 * Math.PI / 180.0;
+              var radLat2 = lat2 * Math.PI / 180.0;
+              var a = radLat1 - radLat2;
+              var b = lng1 * Math.PI / 180.0 - lng2 * Math.PI / 180.0;
+              var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
+                   Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+              var EARTH_RADIUS = 6378137.0;    //单位M
+              s = s * EARTH_RADIUS;
+
+              s = Math.round(s * 10000) / 10000;
+              return s
+            }
+
+
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .container {
+       width: 100%;
+       position: relative;
+    }
+
+    .bm-view {
+       width: 100%;
+       height: 350rpx;
+    }
+    .box{
+
+       box-shadow: 0 0 0px #cccccc;
+       border-radius: 10rpx;
+       margin: 10px 0 0 0;
+       background: #ffffff;
+    }
+    ::v-deep .u-tabs__wrapper__nav__item{
+      flex:1;
+    }
+    .zhoubianbuilding{
+      @include flex-left(column);
+      margin: 10rpx 10rpx 10rpx 10rpx;
+      align-items: flex-start!important;
+      min-height:140px;
+      .zhoubian{
+         @include flex-left(row);
+         margin: 0 0rpx 16rpx 0;
+         font-size: 26rpx;
+         .zhoubianname{
+           margin: 0 0 0 5px;
+         }
+         .zhoubiandistance{
+           margin: 0 0 0 10px;
+           color:#909399;
+         }
+      }
+    }
+
+</style>

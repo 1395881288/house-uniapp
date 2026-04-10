@@ -1,0 +1,195 @@
+@font-face {
+  font-family: "iconfontwoju"; /* Project id 4677908 */
+  src: url('@/static/iconfontwoju/iconfont.woff2?t=1725807163304') format('woff2'),
+       url('@/static/iconfontwoju/iconfont.woff?t=1725807163304') format('woff'),
+       url('@/static/iconfontwoju/iconfont.ttf?t=1725807163304') format('truetype');
+}
+
+.iconfontwoju {
+  font-family: "iconfontwoju" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-allpets:before {
+  content: "\e60b";
+}
+
+.icon-tableFootball:before {
+  content: "\e605";
+}
+
+.icon-reception:before {
+  content: "\e68e";
+}
+
+.icon-danceRoom:before {
+  content: "\e65a";
+}
+
+.icon-billiardsArea:before {
+  content: "\e602";
+}
+
+.icon-park:before {
+  content: "\e6e5";
+}
+
+.icon-tableFootball2:before {
+  content: "\e682";
+}
+
+.icon-receptionArea:before {
+  content: "\e611";
+}
+
+.icon-skyGarden:before {
+  content: "\e601";
+}
+
+.icon-allpets2:before {
+  content: "\e609";
+}
+
+.icon-expressLocker:before {
+  content: "\e63d";
+}
+
+.icon-restArea:before {
+  content: "\e63b";
+}
+
+.icon-laundry:before {
+  content: "\e63a";
+}
+
+.icon-barCounter:before {
+  content: "\e62c";
+}
+
+.icon-place:before {
+  content: "\e639";
+}
+
+.icon-leisureArea:before {
+  content: "\e625";
+}
+
+.icon-reception2:before {
+  content: "\e626";
+}
+
+.icon-bookBar:before {
+  content: "\e629";
+}
+
+.icon-elevator:before {
+  content: "\e631";
+}
+
+.icon-monitoring:before {
+  content: "\e632";
+}
+
+.icon-dinnerBar:before {
+  content: "\e633";
+}
+
+.icon-metro:before {
+  content: "\e634";
+}
+
+.icon-avAone:before {
+  content: "\e635";
+}
+
+.icon-gym:before {
+  content: "\e637";
+}
+
+.icon-store:before {
+  content: "\e638";
+}
+
+.icon-cooking:before {
+  content: "\e68a";
+}
+
+.icon-toilet:before {
+  content: "\e6fb";
+}
+
+.icon-smart_lock:before {
+  content: "\e679";
+}
+
+.icon-refrigerator:before {
+  content: "\e67a";
+}
+
+.icon-television:before {
+  content: "\e67c";
+}
+
+.icon-wardrobe:before {
+  content: "\e67d";
+}
+
+.icon-desk:before {
+  content: "\e67e";
+}
+
+.icon-sofa:before {
+  content: "\e67b";
+}
+
+.icon-kitchen_ventilator:before {
+  content: "\e676";
+}
+
+.icon-water_purifier:before {
+  content: "\e64e";
+}
+
+.icon-balcony:before {
+  content: "\e643";
+}
+
+.icon-induction_cooker:before {
+  content: "\e677";
+}
+
+.icon-bed:before {
+  content: "\e623";
+}
+
+.icon-broadband:before {
+  content: "\e627";
+}
+
+.icon-washing_machine:before {
+  content: "\e628";
+}
+
+.icon-microwave_oven:before {
+  content: "\e62a";
+}
+
+.icon-naturalgas:before {
+  content: "\e62b";
+}
+
+.icon-water_heater:before {
+  content: "\e62d";
+}
+
+.icon-air_conditioner:before {
+  content: "\e62e";
+}
+
+.icon-centralheating:before {
+  content: "\e62f";
+}
+

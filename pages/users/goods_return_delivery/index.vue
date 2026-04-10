@@ -1,6 +1,6 @@
 <template>
 	<view>
-    <!-- TODO 芋艿：退货地址，后续写在这里，还是写在退款详情界面 -->
+    <!-- TODO ：退货地址，后续写在这里，还是写在退款详情界面 -->
 		<form @submit="subRefund" report-submit='true'>
 		  <view class='apply-return'>
 		    <view class='list borRadius14'>

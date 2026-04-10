@@ -57,6 +57,6 @@ export function getProductBrokeragePrice(spuId) {
   return request.get('app-api/house/brokerage-record/get-product-brokerage-price', {
     spuId
   }, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }

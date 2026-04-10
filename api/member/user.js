@@ -23,7 +23,7 @@ export function updateUserPassword(data) {
 // 重置密码
 export function resetUserPassword(data) {
   return request.put('app-api/member/user/reset-password', data, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }
 // 注销账号

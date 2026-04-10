@@ -19,7 +19,7 @@
           </view>
 					<view class='money font-color'>￥{{ fen2yuan(item.price) }}</view>
           <!-- 售后状态 -->
-          <!-- TODO 芋艿：这样式不太合理；应该顺着向右对齐 -->
+          <!-- TODO ：这样式不太合理；应该顺着向右对齐 -->
           <view class="evaluate" style="right: 60px;" v-if="afterSale" @click.stop="afterSaleTap(item)">
             {{
               item.afterSaleStatus === 0 ? '申请退款' :

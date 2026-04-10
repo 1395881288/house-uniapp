@@ -83,7 +83,7 @@
 				page: 1, // 页码
 				limit: 20, // 数量
 
-        // TODO 芋艿：这里后续要干掉，应该单独有支付页
+        // TODO ：这里后续要干掉，应该单独有支付页
 				payMode: [{
 						name: "微信支付",
 						icon: "icon-weixinzhifu",
@@ -159,7 +159,7 @@
           url: '/pages/activity/goods_bargain/index'
         })
       },
-      // TODO @芋艿：貌似没看到调用的地方，估计暂时没实现
+      // TODO @：貌似没看到调用的地方，估计暂时没实现
       getBargainUserCancel: function(bargainId) {
         var that = this;
         getBargainUserCancel({

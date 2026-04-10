@@ -119,7 +119,7 @@
 					title: !this.userInfo.phone && this.isLogin?'正在绑定中':'正在登录中'
 				});
 				if (!this.userInfo.phone && this.isLogin) {
-          // TODO 芋艿：不晓得它要搞啥哈？？？
+          // TODO ：不晓得它要搞啥哈？？？
 					iosBinding({
 						captcha: this.codeNum,
 						phone: this.account
@@ -146,7 +146,7 @@
             socialCode: this.socialCode,
             socialState: this.socialState
 					}).then(res => {
-            // TODO 芋艿：refreshToken 机制
+            // TODO ：refreshToken 机制
             let data = res.data;
             this.$store.commit("LOGIN", {
               'token': res.data.accessToken

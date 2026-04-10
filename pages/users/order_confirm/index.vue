@@ -372,7 +372,7 @@
           seckillActivityId: this.seckillActivityId,
           bargainRecordId: this.bargainRecordId,
           combinationActivityId: this.combinationActivityId,
-          // TODO 芋艿：秒杀等等
+          // TODO ：秒杀等等
         }
       },
 
@@ -462,7 +462,7 @@
        */
       onAddress: function() {
         this.address.address = true;
-        // TODO 芋艿：callbackUrl
+        // TODO ：callbackUrl
         this.pagesUrl = '/pages/users/user_address_list/index?';
       },
       /**

@@ -150,7 +150,7 @@
 				<view style='height:120rpx;'></view>
 			</scroll-view>
 			<view class='footer acea-row row-between-wrapper'>
-        <!-- 客服 TODO 芋艿：待完成 -->
+        <!-- 客服 TODO ：待完成 -->
         <!-- #ifdef MP -->
 				<button open-type="contact" hover-class='none' class='item'>
 					<view class='iconfont icon-kefu'></view>
@@ -406,7 +406,7 @@
       }
       // 解析 id 商品编号
       if (options.scene) { // 仅仅小程序扫码进入
-        // TODO 芋艿：code 是啥
+        // TODO ：code 是啥
         let qrCodeValue = this.$util.getUrlParams(decodeURIComponent(options.scene));
         let mapeMpQrCodeValue = this.$util.formatMpQrCodeData(qrCodeValue);
         app.globalData.spread = mapeMpQrCodeValue.spread;

@@ -268,7 +268,7 @@
 					socialCode: socialCode,
 					socialState: socialState
 				}).then(res => {
-					// TODO 芋艿：refreshToken 机制
+					// TODO ：refreshToken 机制
 					let data = res.data;
 					this.$store.commit("LOGIN", {
 						'token': res.data.accessToken
@@ -346,7 +346,7 @@
 				}).then(({
 					data
 				}) => {
-					// TODO 芋艿：refreshToken 机制
+					// TODO ：refreshToken 机制
 					this.$store.commit("LOGIN", {
 						'token': data.accessToken
 					});

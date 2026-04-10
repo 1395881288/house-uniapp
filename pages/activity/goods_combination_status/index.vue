@@ -241,9 +241,9 @@
 				toLogin();
 			}
 
-      // TODO 芋艿：这里调用下加载 userinfo 信息，目前先写死；
+      // TODO ：这里调用下加载 userinfo 信息，目前先写死；
       this.userInfo = {
-        nickname: '芋艿'
+        nickname: ''
       }
 
       // 加载拼团信息
@@ -308,7 +308,7 @@
       lookAll: function() {
         this.iShidden = !this.iShidden;
       },
-      // 拼团取消 TODO 芋艿
+      // 拼团取消 TODO 
       getCombinationRemove: function() {
         var that = this;
         postCombinationRemove({

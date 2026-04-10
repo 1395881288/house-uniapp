@@ -10,7 +10,7 @@
 						<view class='num'>{{ userInfo.totalPoint || 0}}</view>
 						<view>累计积分</view>
 					</view>
-          <!-- TODO 芋艿：后续接入消费统计 -->
+          <!-- TODO ：后续接入消费统计 -->
 					<view class='item'>
 						<view class='num'>{{integral.deductionIntegral || 0}}</view>
 						<view>累计消费</view>

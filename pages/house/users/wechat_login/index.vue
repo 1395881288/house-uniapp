@@ -198,7 +198,7 @@
 				AuthApi.weixinMiniAppLogin(phoneCode, loginCode, 'default').then(res => {
 					uni.hideLoading();
 					const data = res.data;
-					// TODO 芋艿：refreshToken 机制
+					// TODO ：refreshToken 机制
 					this.$store.commit("LOGIN", {
 						'token': data.accessToken
 					});

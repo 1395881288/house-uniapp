@@ -119,7 +119,7 @@
 			// #ifdef MP
 			phoneSilenceAuth(code) {
 				let self = this
-        // TODO @芋艿：貌似这里没做
+        // TODO @：貌似这里没做
 				phoneSilenceAuth({
 					code: code,
 					spid: app.globalData.spid,

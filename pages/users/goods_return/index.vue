@@ -27,12 +27,12 @@
               </view>
             </picker>
           </view>
-          <!-- TODO 芋艿：按照有赞的做法；未发货，不输入件数；已发货，可调整 -->
+          <!-- TODO ：按照有赞的做法；未发货，不输入件数；已发货，可调整 -->
           <view class='item acea-row row-between-wrapper'>
             <view>退货件数</view>
             <view class='num'>{{ orderItem.count }}</view>
           </view>
-          <!-- TODO 芋艿：后端改成可以填写金额 -->
+          <!-- TODO ：后端改成可以填写金额 -->
           <view class='item acea-row row-between-wrapper'>
             <view>退款金额</view>
             <view class='num'>￥{{ (parseFloat(orderItem.payPrice) / 100.0).toFixed(2) }}</view>

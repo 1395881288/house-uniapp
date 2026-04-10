@@ -308,7 +308,7 @@
 
         // ========== 砍价记录 ==========
         storeBargainId: 0, // 砍价记录 id
-        startBargainUid: 0, // 开启砍价用户 uid TODO 芋艿：目前很多逻辑基于 startBargainUid 是不太合理的，应该通过后端返回的 userId 处理；等后续优化代码，在考虑
+        startBargainUid: 0, // 开启砍价用户 uid TODO ：目前很多逻辑基于 startBargainUid 是不太合理的，应该通过后端返回的 userId 处理；等后续优化代码，在考虑
         bargainUserInfo: {}, // 开启砍价用户信息
         action: 0, // 拼团记录的参与动作
         helpAction: 0, // 帮砍动作
@@ -405,7 +405,7 @@
 				this.storeBargainId = options.storeBargainId ? Number(options.storeBargainId) : 0;
 			}
 
-      // TODO 芋艿：分销逻辑
+      // TODO ：分销逻辑
       if (this.isLogin) {
         silenceBindingSpread();
       }
@@ -525,7 +525,7 @@
           return 2; // 参与动作 - 参与中，等待砍价
         }
         if (item.status === 3) {
-          return 6; // 参与动作 - 砍价失败；TODO 芋艿：看看后续这个场景，应该做什么
+          return 6; // 参与动作 - 砍价失败；TODO ：看看后续这个场景，应该做什么
         }
         if (!item.orderId) {
           return 3; // 参与动作 - 砍价成功，待下单
@@ -553,7 +553,7 @@
         var that = this;
         BargainApi.createBargainRecord(this.id).then(res => {
           this.storeBargainId = res.data.storeBargainUserId;
-          // 自己给自己助力 TODO 芋艿：目前自己不能给自己助力
+          // 自己给自己助力 TODO ：目前自己不能给自己助力
           // this.setBargainHelp();
           // 获得拼团记录的最新信息
           this.gobargainUserInfo();

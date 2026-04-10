@@ -6,12 +6,7 @@
 				<view class='picTxt acea-row row-middle'>
           <!-- 状态图 -->
           <view class='pictrue'>
-            <image v-if="orderInfo.status === 0" src="http://test.yudao.iocoder.cn/order/status_0.gif" />
-            <image v-if="orderInfo.status === 10" src="http://test.yudao.iocoder.cn/order/status_10.gif" />
-            <image v-if="orderInfo.status === 20" src="http://test.yudao.iocoder.cn/order/status_20.gif" />
-            <image v-if="orderInfo.status === 30 && !orderInfo.commentStatus" src="http://test.yudao.iocoder.cn/order/status_30a.gif" />
-            <image v-if="orderInfo.status === 30 && orderInfo.commentStatus" src="http://test.yudao.iocoder.cn/order/status_30b.gif" />
-            <image v-if="orderInfo.status === 40" src="http://test.yudao.iocoder.cn/order/status_40.gif" />
+
           </view>
 					<view class='data'>
             <!-- 状态提示 -->
@@ -20,7 +15,7 @@
             <view class='state' v-if="orderInfo.status === 20">商家已发货，请耐心等待</view>
             <view class='state' v-if="orderInfo.status === 30 && !orderInfo.commentStatus">已收货，快去评价一下吧</view>
             <view class='state' v-if="orderInfo.status === 30 && orderInfo.commentStatus">交易完成，感谢您的支持</view>
-            <!-- TODO 芋艿：未来可以优化下，关闭的原因补充。例如说：订单超时/订单取消；参考淘宝 -->
+            <!-- TODO ：未来可以优化下，关闭的原因补充。例如说：订单超时/订单取消；参考淘宝 -->
             <view class='state' v-if="orderInfo.status === 40">交易关闭</view>
             <!-- 下单时间 -->
 						<view>{{ formatDate(orderInfo.createTime) }}</view>
@@ -214,8 +209,8 @@
 						<view>优惠券抵扣：</view>
 						<view class='conter'>-￥{{ fen2yuan(orderInfo.couponPrice) }}</view>
 					</view>
-          <!-- TODO 芋艿：vip 价格减免 from php -->
-          <!-- TODO 芋艿：vip 价格减免 from php -->
+          <!-- TODO ：vip 价格减免 from php -->
+          <!-- TODO ：vip 价格减免 from php -->
           <view class='item acea-row row-between' v-if="orderInfo.pointPrice > 0">
 						<view>积分抵扣：</view>
 							<view class='conter'>-￥{{ fen2yuan(orderInfo.deductionPrice) }}</view>
@@ -234,7 +229,7 @@
 					<view class='bnt bg-color' v-if="orderInfo.status === 0" @tap='goPay'>
             立即付款
           </view>
-          <!-- TODO 芋艿：拼团 -->
+          <!-- TODO ：拼团 -->
           <view class='bnt bg-color' v-if="orderInfo.combinationId > 0" @tap='goJoinPink'>查看拼团</view>
           <navigator class='bnt cancel' v-if="orderInfo.logisticsId > 0"
                      hover-class='none' :url="'/pages/users/goods_logistics/index?orderId='+ orderInfo.orderId">
@@ -246,7 +241,7 @@
 					<view class='bnt cancel' v-if="orderInfo.status === 40" @tap='delOrder'>
             删除订单
           </view>
-          <!-- TODO 芋艿：再次购买 -->
+          <!-- TODO ：再次购买 -->
           <view class='bnt bg-color' v-if="orderInfo.status==3 && orderInfo.type!==1" @tap='goOrderConfirm'>
             再次购买
           </view>

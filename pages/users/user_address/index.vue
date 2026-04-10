@@ -74,7 +74,7 @@
         multiIndex: [0, 0, 0], // 当前选中的省 index、市 index、区 index
 				cityId: 0, // 区的编号~ 变量名暂时没改过来
 
-        // TODO 芋艿：看看后面咋搞回来
+        // TODO ：看看后面咋搞回来
         cartId: '', // 购物车id
         pinkId: 0, // 拼团id
         couponId: 0, // 优惠券id
@@ -207,7 +207,7 @@
           });
         })
       },
-      // TODO 芋艿：需要改下
+      // TODO ：需要改下
       ChangeIsDefault: function(e) {
         this.$set(this.userAddress, 'defaultStatus', !this.userAddress.defaultStatus);
       },
@@ -312,7 +312,7 @@
 			},
       /**
        * 通过地图，选择到具体的地址
-       * TODO 芋艿：需要测试下；
+       * TODO ：需要测试下；
        */
 			chooseLocation: function () {
 				uni.chooseLocation({
@@ -321,7 +321,7 @@
 					}
 				})
 			},
-			// 导入共享地址（小程序）TODO 芋艿：待实现
+			// 导入共享地址（小程序）TODO ：待实现
 			getWxAddress: function() {
 				let that = this;
 				uni.authorize({
@@ -413,7 +413,7 @@
 					},
 				})
 			},
-			// 导入共享地址（微信）；TODO 芋艿：待实现
+			// 导入共享地址（微信）；TODO ：待实现
 			getAddress() {
 				let that = this;
 				that.$wechat.openAddress().then(userInfo => {

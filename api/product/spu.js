@@ -10,7 +10,7 @@ export function getSpuList(recommendType) {
 // 获得商品 SPU 分页
 export function getSpuPage(data) {
   return request.get('app-api/product/spu/page', data, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }
 
@@ -19,6 +19,6 @@ export function getSpuDetail(id) {
   return request.get('app-api/product/spu/get-detail', {
     id
   }, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }

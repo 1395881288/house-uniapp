@@ -20,14 +20,14 @@ export function getCouponPage(data) {
 // 获得优惠劵模板分页
 export function getCouponTemplatePage(data) {
   return request.get("app-api/promotion/coupon-template/page", data, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }
 
 // 获得优惠劵模板列表
 export function getCouponTemplateList(data) {
   return request.get("app-api/promotion/coupon-template/list", data, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }
 

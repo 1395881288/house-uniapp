@@ -41,7 +41,7 @@ export default {
   props: {},
   data: function() {
     return {
-      imgUrls: [], // TODO @芋艿：没想好，读取哪里的 banner
+      imgUrls: [], // TODO @：没想好，读取哪里的 banner
       goodsList: [],
       name: "",
       icon: "",

@@ -31,7 +31,7 @@ class AuthWechat {
       AuthApi.createWeixinMpJsapiSignature(location.href).then(res => {
         // debugger
         const jsapiTicket = res.data;
-        jsapiTicket.jsApiList = ['chooseWXPay']; // TODO  芋艿:这里要设置下
+        jsapiTicket.jsApiList = ['chooseWXPay']; // TODO  :这里要设置下
         jsapiTicket.debug = false;
         this.instance.config(jsapiTicket);
         this.initConfig = jsapiTicket;

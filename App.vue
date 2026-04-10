@@ -94,14 +94,14 @@
 					// 存储静默授权code
 					uni.setStorageSync('snsapiCode', code);
 					Auth.auth(code, state, that.$Cache.get('spread')).then(res => {
-						// TODO 芋艿：snRouter 的作用是啥
+						// TODO ：snRouter 的作用是啥
 						uni.setStorageSync('snRouter', decodeURIComponent(decodeURIComponent(option.query
 							.back_url)));
 						// 跳转回去
 						location.replace(decodeURIComponent(decodeURIComponent(option.query.back_url)));
 					}).catch(error => {
 						this.$Cache.set('snsapiKey', code);
-						// TODO 芋艿：为什么没有 snsapiKey 就反复认证？？？没看懂
+						// TODO ：为什么没有 snsapiKey 就反复认证？？？没看懂
 						// if (!this.$Cache.has('snsapiKey')) {
 						// 	if (location.pathname.indexOf('/pages/users/wechat_login/index') === -1) {
 						// 		Auth.oAuth(snsapiBase, option.query.back_url);
@@ -152,10 +152,9 @@
 			// #ifdef H5
 			uni.getSystemInfo({
 				success(e) {
-					// TODO 芋艿：这样是否合理？？？
+					// TODO ：这样是否合理？？？
 					/* 窗口宽度大于420px且不在PC页面且不在移动设备时跳转至 PC.html 页面 */
 					if (e.windowWidth > 420 && !window.top.isPC && !/iOS|Android/i.test(e.system)) {
-						// window.location.pathname = 'https://java.crmeb.net/';
 						/* 若你的项目未设置根目录（默认为 / 时），则使用下方代码 */
 						window.location.pathname = '/static/html/pc.html';
 					}

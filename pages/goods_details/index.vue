@@ -146,7 +146,7 @@
 			</scroll-view>
 		</view>
 		<view class='footer acea-row row-between-wrapper'>
-      <!-- 客服 TODO 芋艿：待完成 -->
+      <!-- 客服 TODO ：待完成 -->
 			<!-- #ifdef MP -->
 			<button open-type="contact" hover-class='none' class='item'>
 				<view class='iconfont icon-kefu'></view>
@@ -393,7 +393,7 @@
 		computed: mapGetters(['isLogin', 'uid', 'chatUrl']),
 		watch: {
 			isLogin: {
-        // TODO 芋艿：测试下，如果登录后，这里的效果
+        // TODO ：测试下，如果登录后，这里的效果
 				handler: function(newV, oldV) {
 					let that = this;
 					if (newV === true) {
@@ -440,7 +440,7 @@
       // 解析 id 商品编号
       if (options.hasOwnProperty('id') || options.scene) {
 				if (options.scene) { // 仅仅小程序扫码进入
-          // TODO 芋艿：code 是啥
+          // TODO ：code 是啥
           let qrCodeValue = this.$util.getUrlParams(decodeURIComponent(options.scene));
 					let mapeMpQrCodeValue = this.$util.formatMpQrCodeData(qrCodeValue);
 					app.globalData.spread = mapeMpQrCodeValue.spread;

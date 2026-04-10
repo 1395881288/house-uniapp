@@ -5,7 +5,7 @@ export function getCommentStatistics(spuId) {
   return request.get('app-api/product/comment/statistics', {
     spuId
   }, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }
 
@@ -15,13 +15,13 @@ export function getCommentList(spuId, count) {
     spuId,
     count
   }, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }
 
 // 获得商品评价分页
 export function getCommentPage(data) {
   return request.get('app-api/product/comment/page', data, {
-    noAuth: true // TODO 芋艿：后续要做调整
+    noAuth: true // TODO ：后续要做调整
   });
 }

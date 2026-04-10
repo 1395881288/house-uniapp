@@ -50,7 +50,7 @@ function ecURIComponent(index)
 	return encodeURIComponent('['+index+']')
 }
 
-// TODO 芋艿：临时解决 uniapp 在小程序，undefined 会被 tostring 的问题
+// TODO ：临时解决 uniapp 在小程序，undefined 会被 tostring 的问题
 function deleteUndefinedProperties(obj) {
 	for (let key in obj) {
 		if (obj.hasOwnProperty(key)) {
@@ -121,10 +121,10 @@ function baseRequest(url, method, data, {
 		uni.request({
 			// url: url.indexOf('app-api') < 0 ? Url + '/api/front/' + url
 			url: url.indexOf('app-api') < 0 ? Url + '/api/front/' + url
-				// : 'http://yunai.natapp1.cc/' + url, // TODO 芋艿：搞个 url 的配置
+				// : 'http://yunai.natapp1.cc/' + url, // TODO ：搞个 url 的配置
 				:
-				(Url + (url.startsWith("/") ? url : ("/" + url))), // TODO 芋艿：搞个 url 的配置
-			// : 'http://api-dashboard.yudao.iocoder.cn/' + url, // TODO 芋艿：搞个 url 的配置
+				(Url + (url.startsWith("/") ? url : ("/" + url))), // TODO ：搞个 url 的配置
+			// : 'http://api.cn/' + url, // TODO ：搞个 url 的配置
 			method: method || 'GET',
 			header: header,
 			data: data || {},

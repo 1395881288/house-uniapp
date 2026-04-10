@@ -40,7 +40,7 @@
           查看订单
         </button>
 			</view>
-      <!-- TODO 芋艿：拼团 -->
+      <!-- TODO ：拼团 -->
 			<button @click="goPink(order_pay_info.pinkId)" class='returnBnt cart-color' formType="submit" hover-class='none'
               v-if="order_pay_info.pinkId && order_pay_info.payStatus">
         邀请好友参团

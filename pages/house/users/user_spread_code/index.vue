@@ -115,7 +115,7 @@
 				TradeConfigApi.getTradeConfig().then(res => {
 					uni.hideLoading();
 					const posterUrls = [];
-					// TODO @芋艿：这里后续可以优化下；直接使用 brokeragePosterUrls 数组，而不是要搞 pic 元素
+					// TODO @：这里后续可以优化下；直接使用 brokeragePosterUrls 数组，而不是要搞 pic 元素
 					if (res.data.brokeragePosterUrls) {
 						res.data.brokeragePosterUrls.forEach(item => {
 							posterUrls.push({

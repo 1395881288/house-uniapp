@@ -3,7 +3,7 @@
 		<view class='return-list pad30' v-if="orderList.length">
 			<view class='goodWrapper borRadius14' v-for="(item,index) in orderList" :key="index" @click='goOrderDetails(item.id)'>
         <!-- 根据状态，展示 icon -->
-        <!-- TODO 芋艿：需要优化下 icon，目前没展示出来 -->
+        <!-- TODO ：需要优化下 icon，目前没展示出来 -->
         <view class='iconfont icon-shenqingzhong powder' v-if="[10].includes(item.status)" />
         <view class='iconfont icon-daituihuo1 powder' v-if="[20, 30].includes(item.status)"></view>
         <view class='iconfont icon-tuikuanzhong powder' v-if="[40].includes(item.status)"></view>

@@ -148,7 +148,7 @@
 					title: "正在发布评论……"
 				});
 				OrderApi.createOrderItemComment({
-          anonymous: false, // TODO 芋艿：后面加个匿名框框
+          anonymous: false, // TODO ：后面加个匿名框框
           orderItemId: this.orderItemId,
           descriptionScores: descriptionScores,
           benefitScores: benefitScores,
